@@ -14,7 +14,7 @@ public class SnippetFrame extends JFrame
 
     public SnippetFrame(Component component, String title)
     {
-        this(component, title, new Dimension(1600, 600));  // Tamaño por defecto
+        this(component, title, new Dimension(1200, 600));  // Tamaño por defecto
     }
 
     public SnippetFrame()
