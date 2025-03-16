@@ -1,4 +1,4 @@
-package graphicsBasics2d;
+package Ch2GraphicsBasics2d;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
