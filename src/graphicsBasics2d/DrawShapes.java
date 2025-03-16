@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -22,8 +21,6 @@ import java.awt.geom.QuadCurve2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -94,34 +91,36 @@ public class DrawShapes extends JFrame implements ActionListener
     {
         String command = ev.getActionCommand();
         if (null != command)
-        switch (command)
         {
-            case "Rectangle":
-                panel.shapeType = JavaDraw2DPanel.RECTANGLE;
-                break;
-            case "RoundRectangle":
-                panel.shapeType = JavaDraw2DPanel.ROUNDRECTANGLE2D;
-                break;
-            case "Ellipse":
-                panel.shapeType = JavaDraw2DPanel.ELLIPSE2D;
-                break;
-            case "Arc":
-                panel.shapeType = JavaDraw2DPanel.ARC2D;
-                break;
-            case "Line":
-                panel.shapeType = JavaDraw2DPanel.LINE2D;
-                break;
-            case "QuadCurve":
-                panel.shapeType = JavaDraw2DPanel.QUADCURVE2D;
-                break;
-            case "CubicCurve":
-                panel.shapeType = JavaDraw2DPanel.CUBICCURVE2D;
-                break;
-            case "Polygon":
-                panel.shapeType = JavaDraw2DPanel.POLYGON;
-                break;
-            default:
-                break;
+            switch (command)
+            {
+                case "Rectangle":
+                    panel.shapeType = JavaDraw2DPanel.RECTANGLE;
+                    break;
+                case "RoundRectangle":
+                    panel.shapeType = JavaDraw2DPanel.ROUNDRECTANGLE2D;
+                    break;
+                case "Ellipse":
+                    panel.shapeType = JavaDraw2DPanel.ELLIPSE2D;
+                    break;
+                case "Arc":
+                    panel.shapeType = JavaDraw2DPanel.ARC2D;
+                    break;
+                case "Line":
+                    panel.shapeType = JavaDraw2DPanel.LINE2D;
+                    break;
+                case "QuadCurve":
+                    panel.shapeType = JavaDraw2DPanel.QUADCURVE2D;
+                    break;
+                case "CubicCurve":
+                    panel.shapeType = JavaDraw2DPanel.CUBICCURVE2D;
+                    break;
+                case "Polygon":
+                    panel.shapeType = JavaDraw2DPanel.POLYGON;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
@@ -142,10 +141,10 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
 //    public static final int AREA = 9;
     protected int shapeType = RECTANGLE;
     // vector of input points
-    List points = new ArrayList();
-    int pointIndex = 0;
-    Shape partialShape = null;
-    Point p = null;
+    private final List points = new ArrayList();
+    private int pointIndex = 0;
+    private Shape partialShape = null;
+    private Point p = null;
 
     public JavaDraw2DPanel()
     {
@@ -200,31 +199,28 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
         Shape s = null;
         switch (shapeType)
         {
-            case RECTANGLE:
+            case RECTANGLE ->
                 s = new Rectangle(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
-                break;
-            case ROUNDRECTANGLE2D:
+            case ROUNDRECTANGLE2D ->
                 s = new RoundRectangle2D.Float(p1.x, p1.y,
                         p.x - p1.x, p.y - p1.y, 10, 10);
-                break;
-            case ELLIPSE2D:
+            case ELLIPSE2D ->
                 s = new Ellipse2D.Float(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
-                break;
-            case ARC2D:
+            case ARC2D ->
                 s = new Arc2D.Float(p1.x, p1.y, p.x - p1.x,
                         p.y - p1.y, 30, 120, Arc2D.OPEN);
-                break;
-            case LINE2D:
+            case LINE2D ->
                 s = new Line2D.Float(p1.x, p1.y, p.x, p.y);
-                break;
-            case QUADCURVE2D:
+            case QUADCURVE2D ->
+            {
                 if (pointIndex > 1)
                 {
                     Point p2 = (Point) points.get(0);
                     s = new QuadCurve2D.Float(p2.x, p2.y, p1.x, p1.y, p.x, p.y);
                 }
-                break;
-            case CUBICCURVE2D:
+            }
+            case CUBICCURVE2D ->
+            {
                 if (pointIndex > 2)
                 {
                     Point p2 = (Point) points.get(pointIndex - 2);
@@ -232,8 +228,9 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
                     s = new CubicCurve2D.Float(p3.x, p3.y, p2.x, p2.y,
                             p1.x, p1.y, p.x, p.y);
                 }
-                break;
-            case POLYGON:
+            }
+            case POLYGON ->
+            {
                 if (ev.isShiftDown())
                 {
                     s = new Polygon();
@@ -244,7 +241,7 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
                     }
                     ((Polygon) s).addPoint(p.x, p.y);
                 }
-
+            }
         }
         if (s != null)
         {
@@ -270,15 +267,17 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
         Point p1 = (Point) points.get(pointIndex - 1);
         switch (shapeType)
         {
-            case RECTANGLE:
+            case RECTANGLE ->
+            {
                 if (p != null)
                 {
                     g.drawRect(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
                 }
                 p = ev.getPoint();
                 g.drawRect(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
-                break;
-            case ROUNDRECTANGLE2D:
+            }
+            case ROUNDRECTANGLE2D ->
+            {
                 if (p != null)
                 {
                     g.drawRoundRect(p1.x, p1.y,
@@ -286,33 +285,36 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
                 }
                 p = ev.getPoint();
                 g.drawRoundRect(p1.x, p1.y, p.x - p1.x, p.y - p1.y, 10, 10);
-                break;
-            case ELLIPSE2D:
+            }
+            case ELLIPSE2D ->
+            {
                 if (p != null)
                 {
                     g.drawOval(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
                 }
                 p = ev.getPoint();
                 g.drawOval(p1.x, p1.y, p.x - p1.x, p.y - p1.y);
-                break;
-            case ARC2D:
+            }
+            case ARC2D ->
+            {
                 if (p != null)
                 {
                     g.drawArc(p1.x, p1.y, p.x - p1.x, p.y - p1.y, 30, 120);
                 }
                 p = ev.getPoint();
                 g.drawArc(p1.x, p1.y, p.x - p1.x, p.y - p1.y, 30, 120);
-                break;
-            case LINE2D:
-            case POLYGON:
+            }
+            case LINE2D, POLYGON ->
+            {
                 if (p != null)
                 {
                     g.drawLine(p1.x, p1.y, p.x, p.y);
                 }
                 p = ev.getPoint();
                 g.drawLine(p1.x, p1.y, p.x, p.y);
-                break;
-            case QUADCURVE2D:
+            }
+            case QUADCURVE2D ->
+            {
                 if (pointIndex == 1)
                 {
                     if (p != null)
@@ -333,41 +335,47 @@ class JavaDraw2DPanel extends JPanel implements MouseListener, MouseMotionListen
                             p1.x, p1.y, p.x, p.y);
                     g.draw(partialShape);
                 }
-                break;
-            case CUBICCURVE2D:
-                if (pointIndex == 1)
+            }
+            case CUBICCURVE2D ->
+            {
+                switch (pointIndex)
                 {
-                    if (p != null)
+                    case 1 ->
                     {
+                        if (p != null)
+                        {
+                            g.drawLine(p1.x, p1.y, p.x, p.y);
+                        }
+                        p = ev.getPoint();
                         g.drawLine(p1.x, p1.y, p.x, p.y);
                     }
-                    p = ev.getPoint();
-                    g.drawLine(p1.x, p1.y, p.x, p.y);
-                } else if (pointIndex == 2)
-                {
-                    Point p2 = (Point) points.get(pointIndex - 2);
-                    if (p != null)
+                    case 2 ->
                     {
+                        Point p2 = (Point) points.get(pointIndex - 2);
+                        if (p != null)
+                        {
+                            g.draw(partialShape);
+                        }
+                        p = ev.getPoint();
+                        partialShape = new QuadCurve2D.Float(p2.x, p2.y,
+                                p1.x, p1.y, p.x, p.y);
                         g.draw(partialShape);
                     }
-                    p = ev.getPoint();
-                    partialShape = new QuadCurve2D.Float(p2.x, p2.y,
-                            p1.x, p1.y, p.x, p.y);
-                    g.draw(partialShape);
-                } else
-                {
-                    Point p2 = (Point) points.get(pointIndex - 2);
-                    Point p3 = (Point) points.get(pointIndex - 3);
-                    if (p != null)
+                    default ->
                     {
+                        Point p2 = (Point) points.get(pointIndex - 2);
+                        Point p3 = (Point) points.get(pointIndex - 3);
+                        if (p != null)
+                        {
+                            g.draw(partialShape);
+                        }
+                        p = ev.getPoint();
+                        partialShape = new CubicCurve2D.Float(p3.x, p3.y,
+                                p2.x, p2.y, p1.x, p1.y, p.x, p.y);
                         g.draw(partialShape);
                     }
-                    p = ev.getPoint();
-                    partialShape = new CubicCurve2D.Float(p3.x, p3.y,
-                            p2.x, p2.y, p1.x, p1.y, p.x, p.y);
-                    g.draw(partialShape);
                 }
-                break;
+            }
         }
     }
 }
