@@ -164,6 +164,7 @@ public class PaintWork extends JPanel
         JButton boton = new JButton();
         boton.setIcon(new ImageIcon(PATH_RESOURCES + source));
         boton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        boton.setToolTipText(source.split("\\.")[0] + " Tool");
         boton.addActionListener(e);
         panel.add(boton);
     }
