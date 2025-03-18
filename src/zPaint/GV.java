@@ -17,8 +17,8 @@ public class GV
     public static final Color PALE_YELLOW_COLOR = new Color(255, 255, 224);    // LightYellow
     public static final Color PALE_RANDOM_COLOR = new ColorRandom();    // LightYellow
 
-    private final ArrayList shapes = new ArrayList();
-    private static int shapeType = 16;
+//    private final ArrayList shapes = new ArrayList();
+    private static int shapeType = 20;
     public static final int RECTANGLE = 0;
     public static final int ROUNDRECTANGLE2D = 1;
     public static final int ELLIPSE2D = 2;

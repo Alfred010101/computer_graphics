@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D;
  *
  * @author Alfred
  */
-public class FigurasAdicionalesw 
+public class FigurasAdicionales 
 {
     private Color color;
 
