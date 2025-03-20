@@ -1,6 +1,5 @@
 package zPaint.depen;
 
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -21,28 +20,28 @@ public class GV
     public static final Color PALE_RANDOM_COLOR = new ColorRandom();    // LightYellow
 
 //    private final ArrayList shapes = new ArrayList();
-    private static int shapeType = 20;
-    public static final int RECTANGLE = 0;
-    public static final int ROUNDRECTANGLE2D = 1;
-    public static final int ELLIPSE2D = 2;
-    public static final int ARC2D = 3;
-    public static final int LINE2D = 4;
-    public static final int QUADCURVE2D = 5;
-    public static final int CUBICCURVE2D = 6;
-    public static final int POLYGON = 7;
-    public static final int GENERAL = 8;
-    public static final int AREA = 9;
-    public static final int ESTRELLA = 10;
-    public static final int LUNA = 11;
-    public static final int ESPADA = 12;
-    public static final int CUBO = 13;
-    public static final int PIRAMIDE = 14;
-    public static final int LETRAE = 15;
-    public static final int TORRE = 16;
-    public static final int TREBOL = 17;
-    public static final int RAYO = 18;
-    public static final int CORAZON = 19;
-    public static final int SELECCION = 20;
+//    private static int shapeType = 20;
+//    public static final int RECTANGLE = 0;
+//    public static final int ROUNDRECTANGLE2D = 1;
+//    public static final int ELLIPSE2D = 2;
+//    public static final int ARC2D = 3;
+//    public static final int LINE2D = 4;
+//    public static final int QUADCURVE2D = 5;
+//    public static final int CUBICCURVE2D = 6;
+//    public static final int POLYGON = 7;
+//    public static final int GENERAL = 8;
+//    public static final int AREA = 9;
+//    public static final int ESTRELLA = 10;
+//    public static final int LUNA = 11;
+//    public static final int ESPADA = 12;
+//    public static final int CUBO = 13;
+//    public static final int PIRAMIDE = 14;
+//    public static final int LETRAE = 15;
+//    public static final int TORRE = 16;
+//    public static final int TREBOL = 17;
+//    public static final int RAYO = 18;
+//    public static final int CORAZON = 19;
+//    public static final int SELECCION_MODE = 20;
 
     private static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -86,28 +85,79 @@ public class GV
     {
         return new CompoundBorder(new LineBorder(color, 2), new TitledBorder(title));
     }
-    public static void setShapeType(int x)
-    {
-        GV.shapeType = x;
-    }
-    public static int getShapeType()
-    {
-        return shapeType;
-    }
-    
+
+//    public static void setShapeType(int x)
+//    {
+//        GV.shapeType = x;
+//    }
+//
+//    public static int getShapeType()
+//    {
+//        return shapeType;
+//    }
+
     //Mis variables
-     public static int pointIndex = 0;
+    public static int pointIndex = 0;
     public static ArrayList points = new ArrayList();
     public static Color color = null;
     public static Point p = null;
     public static Shape partialShape = null;
 //    public static int shapeType = GV.getShapeType();
     public static Figura edicion = null;
-    public static double lx = 0;
-    public static double ly = 0;
     public static ArrayList<Figura> shapes = new ArrayList<>();
     public static boolean r = false;
     public static boolean paint = false;
     public static Color color2 = null;
     public static Paint colorD = null;
+
+    //figura a dibujar
+    public static double startX = 0;
+    public static double startY = 0;
+    public static double endX = 0;
+    public static double endY = 0;
+    public static MyShape previewShape = null;
+    public static ArrayList<MyShape> myShapes = new ArrayList<>();
+
+    public static enum ShapeTypes
+    {
+        SELECCION_MODE,
+        LINE,
+        RECTANGLE,
+        ROUNDRECTANGLE,
+        ELLIPSE,
+        ARC,
+        POLYGON,
+        QUADCURVE2D,
+        CUBICCURVE2D,
+        //Propias
+        ESTRELLA,
+        LUNA,
+        ESPADA,
+        CUBO,
+        PIRAMIDE,
+        LETRAE,
+        TORRE,
+        TREBOL,
+        RAYO,
+        CORAZON
+    }
+
+    private static ShapeTypes shapeTypeEnum = ShapeTypes.SELECCION_MODE;
+
+    public static void setShapeTypeEnum(ShapeTypes shapeTypes)
+    {
+        shapeTypeEnum = shapeTypes;
+    }
+
+    public static ShapeTypes getShapeTypeEnum()
+    {
+        return shapeTypeEnum;
+    }
+
+    public static MyShape selectedShape = null;
+    public static int offsetX, offsetY;
+    public static boolean isMoving = false;
+//    public static boolean selectionMode = false;
+    public static boolean resizing = false;
+
 }

@@ -27,20 +27,6 @@ public class Paint extends JPanel
     private JScrollPane leftPanel;
     private final WorkPanel centerPanel;
 
-//    public int pointIndex = 0;
-//    public ArrayList points = new ArrayList();
-//    public Color color = null;
-//    public Point p = null;
-//    public Shape partialShape = null;
-//    public int shapeType = GV.getShapeType();
-//    public Figura edicion = null;
-//    public double lx = 0, ly = 0;
-//    public ArrayList<Figura> shapes = new ArrayList<>();
-//    public boolean r = false;
-//    public boolean paint = false;
-//    public Color color2 = null;
-//    public Paint colorD = null;
-
     public Paint()
     {
         setLayout(new BorderLayout());
@@ -111,47 +97,47 @@ public class Paint extends JPanel
 
         initShape("Selection.png", panel, (e) ->
         {
-            GV.setShapeType(GV.SELECCION);
+            GV.setShapeTypeEnum(GV.ShapeTypes.SELECCION_MODE);
         });
 
         initShape("Line.png", panel, (e) ->
         {
-            GV.setShapeType(GV.LINE2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.LINE);
         });
 
         initShape("Rectangle.png", panel, (e) ->
         {
-            GV.setShapeType(GV.RECTANGLE);
+            GV.setShapeTypeEnum(GV.ShapeTypes.RECTANGLE);
         });
 
         initShape("RoundRectangle.png", panel, (e) ->
         {
-            GV.setShapeType(GV.ROUNDRECTANGLE2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.ROUNDRECTANGLE);
         });
 
         initShape("Ellipse.png", panel, (e) ->
         {
-            GV.setShapeType(GV.ELLIPSE2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.ELLIPSE);
         });
 
         initShape("Arc.png", panel, (e) ->
         {
-            GV.setShapeType(GV.ARC2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.ARC);
         });
 
         initShape("Polygon.png", panel, (e) ->
         {
-            GV.setShapeType(GV.POLYGON);
+            GV.setShapeTypeEnum(GV.ShapeTypes.POLYGON);
         });
 
         initShape("QuadCurve.png", panel, (e) ->
         {
-            GV.setShapeType(GV.QUADCURVE2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.QUADCURVE2D);
         });
 
         initShape("CubicCurve.png", panel, (e) ->
         {
-            GV.setShapeType(GV.CUBICCURVE2D);
+            GV.setShapeTypeEnum(GV.ShapeTypes.CUBICCURVE2D);
         });
 
         leftPanel = new JScrollPane(panel);

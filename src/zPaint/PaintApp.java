@@ -137,30 +137,30 @@ public class PaintApp extends JFrame implements ActionListener
         String command = e.getActionCommand();
         if (null != command)
         {
-            switch (command)
-            {
-                case "Estrella" ->
-                    GV.setShapeType(GV.ESTRELLA);
-                case "Luna" ->
-                    GV.setShapeType(GV.LUNA);
-                case "Espada" ->
-                    GV.setShapeType(GV.ESPADA);
-                case "Piramide" ->
-                    GV.setShapeType(GV.PIRAMIDE);
-                case "Letra E" ->
-                    GV.setShapeType(GV.LETRAE);
-                case "Torre Eiffel" ->
-                    GV.setShapeType(GV.TORRE);
-                case "Trebol" ->
-                    GV.setShapeType(GV.TREBOL);
-                case "Rayo" ->
-                    GV.setShapeType(GV.RAYO);
-                case "Corazon" ->
-                    GV.setShapeType(GV.CORAZON);
-                default ->
-                {
-                }
-            }
+//            switch (command)
+//            {
+//                case "Estrella" ->
+//                    GV.setShapeType(GV.ESTRELLA);
+//                case "Luna" ->
+//                    GV.setShapeType(GV.LUNA);
+//                case "Espada" ->
+//                    GV.setShapeType(GV.ESPADA);
+//                case "Piramide" ->
+//                    GV.setShapeType(GV.PIRAMIDE);
+//                case "Letra E" ->
+//                    GV.setShapeType(GV.LETRAE);
+//                case "Torre Eiffel" ->
+//                    GV.setShapeType(GV.TORRE);
+//                case "Trebol" ->
+//                    GV.setShapeType(GV.TREBOL);
+//                case "Rayo" ->
+//                    GV.setShapeType(GV.RAYO);
+//                case "Corazon" ->
+//                    GV.setShapeType(GV.CORAZON);
+//                default ->
+//                {
+//                }
+//            }
         }
     }
 }
