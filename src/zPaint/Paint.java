@@ -1,5 +1,6 @@
 package zPaint;
 
+import zPaint.depen.GV;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,7 +18,7 @@ import javax.swing.JSplitPane;
  *
  * @author Alfred
  */
-public class PaintWork extends JPanel
+public class Paint extends JPanel
 {
 
     protected String PATH_RESOURCES = "src/zPaint/resources/";
@@ -40,7 +41,7 @@ public class PaintWork extends JPanel
 //    public Color color2 = null;
 //    public Paint colorD = null;
 
-    public PaintWork()
+    public Paint()
     {
         setLayout(new BorderLayout());
 

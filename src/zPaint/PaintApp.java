@@ -1,5 +1,6 @@
 package zPaint;
 
+import zPaint.depen.GV;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,7 @@ public class PaintApp extends JFrame implements ActionListener
 
     private JMenuBar menuBar;
     private ToolBar toolBarPanel;
-    private PaintWork paintWorkPanel;
+    private Paint paintPanel;
 
     public PaintApp()
     {
@@ -36,11 +37,11 @@ public class PaintApp extends JFrame implements ActionListener
     {
         initMenu();
         toolBarPanel = new ToolBar();
-        paintWorkPanel = new PaintWork();
+        paintPanel = new Paint();
 
         this.setJMenuBar(menuBar);
         this.add(toolBarPanel, BorderLayout.NORTH);
-        this.add(paintWorkPanel, BorderLayout.CENTER);
+        this.add(paintPanel, BorderLayout.CENTER);
     }
 
     public static void main(String[] args)

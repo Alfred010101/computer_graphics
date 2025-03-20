@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
+import zPaint.depen.GV;
 
 /**
  *
@@ -212,12 +213,12 @@ class ColorPanel extends JPanel
             gradientEnabled = gradientCheckBox.isSelected();
             extraSlidersPanel.setVisible(gradientEnabled); // Mostrar/ocultar sliders adicionales
             updateGradient(); // Actualizar el panel de degradado
-            VarPath.paint = true;
+            GV.paint = true;
         });
         rellenoCB = new JCheckBox("Relleno");
         rellenoCB.addActionListener((ActionEvent e) ->
         {
-            VarPath.r = rellenoCB.isSelected();
+            GV.r = rellenoCB.isSelected();
         });
 
         // Panel para los sliders principales y el CheckBox
@@ -347,13 +348,13 @@ class ColorPanel extends JPanel
 
     private void updateColor()
     {
-        VarPath.color = new Color(red, green, blue);
+        GV.color = new Color(red, green, blue);
         colorBox.setBackground(new Color(red, green, blue));
     }
 
     private void updateColor1()
     {
-        VarPath.color2 = new Color(red1, green1, blue1);
+        GV.color2 = new Color(red1, green1, blue1);
         colorBox1.setBackground(new Color(red1, green1, blue1));
     }
 
