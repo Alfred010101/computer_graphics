@@ -1,22 +1,18 @@
-
-package zPaint;
+package zPaint.depen;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 /**
  *
  * @author Alfred
  */
-public class FigurasAdicionales 
+public class FigurasAdicionales
 {
+
     private Color color;
 
     public Color getColor()
@@ -28,8 +24,6 @@ public class FigurasAdicionales
     {
         this.color = color;
     }
-    
-    
 
     public int[] dimension(int x1, int y1, int x2, int y2)
     {

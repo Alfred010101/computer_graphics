@@ -1,5 +1,5 @@
 
-package zPaint;
+package zPaint.depen;
 
 import java.awt.Color;
 import java.util.Random;

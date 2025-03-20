@@ -1,5 +1,5 @@
 
-package zPaint;
+package zPaint.depen;
 
 import java.awt.Shape;
 import java.awt.*;
